@@ -23,21 +23,19 @@ function addHashtagToList(hashtags, hashtagsListForDB) {
         let currentHashtag = hashtag.text.toLowerCase();
         hashtagsListForDB[currentHashtag] ?
             handleExistingHashtag(hashtagsListForDB[currentHashtag]) :
-            hashtagsListForDB[currentHashtag] = handleNewHashtag();
+            hashtagsListForDB[currentHashtag] = handleNewHashtag(currentHashtag);
     });
 }
 
 function handleExistingHashtag(hashtag) {
     hashtag.counter++;
-    hashtag.lastUpdate = +new Date();
     return hashtag;
 }
 
-function handleNewHashtag() {
+function handleNewHashtag(currentHashtag) {
     return {
+        value: currentHashtag,
         counter: 1,
-        createData: +new Date(),
-        lastUpdate: +new Date()
     }
 }
 
@@ -55,7 +53,7 @@ function saveTweetsData(error, tweets, res) {
 
 function getTweets() {
     twitter.get('search/tweets', { q: '#link #zelda #BreathoftheWild', lang: 'en', result_type: 'recent' }, saveTweetsData)
-    setInterval(getTweets, 60000);
+    setInterval(getTweets, 300000);
 };
 
 getTweets();
