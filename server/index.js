@@ -1,11 +1,12 @@
+require('dotenv').config();
 const twit = require('twitter');
 const db = require('./db');
 
 const twitter = new twit({
-    consumer_key: 'AWzVSrOgnWxF6eZq8tYH0mkbL',
-    consumer_secret: 'ZSM5bwagPlJlLyjlW6b8I2KT0NDNEgMVDJTu6buqZvBELlfAl8',
-    access_token_key: '250763892-i6kcWfKSGj3Rzz9PxWLfqnzCLBWuGur2Nj4IKENp',
-    access_token_secret: 'HQzaktlE7iOPE8tdFBhYfkBgUy5NBnRJsCaQRb8m60FeK'
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token_key: process.env.ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
 function transformHashtagForDB(hashtagsList) {

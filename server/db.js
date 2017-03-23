@@ -1,7 +1,7 @@
 const fs = require('fs');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const dbUrl = 'mongodb://localhost:27017/switch';
+const dbUrl = `mongodb://${process.env.DB_USER_NAME}:${process.env.DB_PASSWORD}@ds039088.mlab.com:39088/guyius`;
 
 module.exports = {
     writeHashtageToDB: (hashTagsForDB) => {
