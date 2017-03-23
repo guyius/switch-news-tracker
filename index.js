@@ -35,7 +35,7 @@ function transformHashtagForDB(hashtagsList) {
 };
 
 function addHashtagToList(hashtags, hashtagsListForDB) {
-    hashtags.map(hashtag => {gi
+    hashtags.map(hashtag => {
         let currentHashtag = hashtag.text.toLowerCase();
         hashtagsListForDB[currentHashtag] ?
             handleExistingHashtag(hashtagsListForDB[currentHashtag]) :
