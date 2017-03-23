@@ -1,4 +1,4 @@
-grequire('dotenv').config();
+require('dotenv').config();
 const twit = require('twitter');
 const db = require('./db');
 
