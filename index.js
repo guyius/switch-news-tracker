@@ -5,7 +5,7 @@ const port = process.env.PORT || 9000;
 
 const requestHandler = (req, res) => {
     console.log(req.url);
-    response.end('server is on');
+    res.end('server is on');
 }
 
 const server = require('http').createServer(requestHandler);
@@ -69,7 +69,7 @@ function saveTweetsData(error, tweets, res) {
 
 function getTweets() {
     twitter.get('search/tweets', { q: '#link #zelda #BreathoftheWild', lang: 'en', result_type: 'recent' }, saveTweetsData)
-    setInterval(getTweets, 60 * 60 * 1000);
+    setInterval(getTweets, 10 * 60 * 1000);
 };
 
 getTweets();
