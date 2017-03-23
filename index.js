@@ -1,6 +1,21 @@
 require('dotenv').config();
 const twit = require('twitter');
 const db = require('./db');
+const port = process.env.port || 9000;
+
+const requestHandler = (req, res) => {
+    console.log(req.url);
+    response.end('server is on');
+}
+
+const server = require('http').createServer(requestHandler);
+
+server.listen(port , (err) => {
+    if(err) {
+        return console.log('something went wrong', err);
+    }
+    console.log(`server is listening on ${port}`);
+})
 
 const twitter = new twit({
     consumer_key: process.env.CONSUMER_KEY,
@@ -54,7 +69,7 @@ function saveTweetsData(error, tweets, res) {
 
 function getTweets() {
     twitter.get('search/tweets', { q: '#link #zelda #BreathoftheWild', lang: 'en', result_type: 'recent' }, saveTweetsData)
-    setInterval(getTweets, 300000);
+    setInterval(getTweets, 60 * 60 * 1000);
 };
 
 getTweets();
