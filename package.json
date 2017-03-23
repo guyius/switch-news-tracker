@@ -71,7 +71,7 @@
     "webpack-dev-server": "2.3.0"
   },
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
