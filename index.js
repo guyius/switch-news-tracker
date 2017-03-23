@@ -1,7 +1,7 @@
 require('dotenv').config();
 const twit = require('twitter');
 const db = require('./db');
-const port = process.env.port || 9000;
+const port = process.env.PORT || 9000;
 
 const requestHandler = (req, res) => {
     console.log(req.url);
@@ -35,7 +35,7 @@ function transformHashtagForDB(hashtagsList) {
 };
 
 function addHashtagToList(hashtags, hashtagsListForDB) {
-    hashtags.map(hashtag => {
+    hashtags.map(hashtag => {gi
         let currentHashtag = hashtag.text.toLowerCase();
         hashtagsListForDB[currentHashtag] ?
             handleExistingHashtag(hashtagsListForDB[currentHashtag]) :
